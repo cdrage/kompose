@@ -29,7 +29,11 @@ import (
 
 	"github.com/skippbox/kompose/pkg/kobject"
 	"github.com/skippbox/kompose/pkg/loader"
+	"github.com/skippbox/kompose/pkg/loader/bundle"
+	"github.com/skippbox/kompose/pkg/loader/compose"
 	"github.com/skippbox/kompose/pkg/transformer"
+	"github.com/skippbox/kompose/pkg/transformer/kubernetes"
+	"github.com/skippbox/kompose/pkg/transformer/openshift"
 )
 
 const (
@@ -243,15 +247,17 @@ func Convert(c *cli.Context) {
 	}
 
 	// loader parses input from file into komposeObject.
+	var l loader.Loader
 	switch inputFormat {
 	case "bundle":
-		komposeObject = loader.LoadBundle(file)
+		l = new(bundle.Bundle)
 	case "compose":
-		komposeObject = loader.LoadCompose(file)
+		l = new(compose.Compose)
 	default:
 		logrus.Fatalf("Input file format is not supported")
-
 	}
+
+	komposeObject = l.LoadFile(file)
 
 	opt := kobject.ConvertOptions{
 		ToStdout:               toStdout,
@@ -267,7 +273,14 @@ func Convert(c *cli.Context) {
 	}
 
 	// transformer maps komposeObject to provider(K8S, OpenShift) primitives
-	transformer.Transform(komposeObject, opt)
+	var t transformer.Transformer
+	if !createDeploymentConfig {
+		t = new(kubernetes.Kubernetes)
+	} else {
+		t = new(openshift.OpenShift)
+	}
+
+	t.Transform(komposeObject, opt)
 }
 
 // Up brings up rc, svc.
