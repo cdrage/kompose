@@ -14,7 +14,7 @@ DOCS_BRANCH="gh-pages"
 DOCS_FOLDER="docs"
 
 # decrypt the private key
-openssl aes-256-cbc -K $encrypted_1069b8f9eeff_key -iv $encrypted_1069b8f9eeff_iv -in "$DOCS_KEY.enc" -out "$DOCS_KEY" -d
+openssl aes-256-cbc -K $encrypted_b1c51b116939_key -iv $encrypted_b1c51b116939_iv -in "$DOCS_KEY.enc" -out "$DOCS_KEY" -d
 chmod 600 "$DOCS_KEY"
 eval `ssh-agent -s`
 ssh-add "$DOCS_KEY"
