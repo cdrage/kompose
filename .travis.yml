@@ -33,4 +33,4 @@ after_success:
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci
   # sync the docs only if everything else was successful
-  - ./sync-docs.sh
+  - ./script/sync-docs.sh
