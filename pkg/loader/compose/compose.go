@@ -47,6 +47,7 @@ func checkUnsupportedKey(composeProject *project.Project) []string {
 	// by keeping record if already saw this key in another service
 	var unsupportedKey = map[string]bool{
 		"CgroupParent":  false,
+		"CgroupParents": false,
 		"CPUSet":        false,
 		"CPUShares":     false,
 		"Devices":       false,
