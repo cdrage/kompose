@@ -29,6 +29,7 @@ import (
 	"github.com/fatih/structs"
 	"github.com/kubernetes-incubator/kompose/pkg/kobject"
 	"github.com/pkg/errors"
+	"github.com/pkg/errors2"
 )
 
 // Compose is docker compose file loader, implements Loader interface
