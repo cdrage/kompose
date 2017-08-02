@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  nginx:
+      image: nginx
+  sysctls:
+    net.core.somaxconn: 1024
+    net.ipv4.tcp_syncookies: 0
