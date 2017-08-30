@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  redis-master:
+    image: gcr.io/google_containers/redis:e2e 
+    build:
+      context: ./dir
+      dockerfile: Dockerfile-alternate
+      args:
+        foo: "bar"
+        foo: "0"
+    ports:
+      - "6379"

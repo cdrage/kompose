@@ -6,7 +6,6 @@ import (
 
 // UnsupportedProperties not yet supported by this implementation of the compose file
 var UnsupportedProperties = []string{
-	"build",
 	"cap_add",
 	"cap_drop",
 	"cgroup_parent",
@@ -79,9 +78,10 @@ type Config struct {
 type ServiceConfig struct {
 	Name string
 
-	CapAdd          []string `mapstructure:"cap_add"`
-	CapDrop         []string `mapstructure:"cap_drop"`
-	CgroupParent    string   `mapstructure:"cgroup_parent"`
+	Build           BuildConfig `mapstructure:"build"`
+	CapAdd          []string    `mapstructure:"cap_add"`
+	CapDrop         []string    `mapstructure:"cap_drop"`
+	CgroupParent    string      `mapstructure:"cgroup_parent"`
 	Command         ShellCommand
 	Configs         []ServiceConfigObjConfig
 	ContainerName   string               `mapstructure:"container_name"`
@@ -124,6 +124,14 @@ type ServiceConfig struct {
 	User            string
 	Volumes         []ServiceVolumeConfig
 	WorkingDir      string `mapstructure:"working_dir"`
+}
+
+// BuildConfig is a type for build
+// using the same format at libcompose: https://github.com/docker/libcompose/blob/master/yaml/build.go#L12
+type BuildConfig struct {
+	Context    string
+	Dockerfile string
+	Args       map[string]*string
 }
 
 // ShellCommand is a string or list of string args
