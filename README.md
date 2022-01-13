@@ -1,7 +1,7 @@
-# minimal
+View the site via:
 
-[![screenshot](img/minimal-jekyll.png)](img/minimal-jekyll.png)
+```sh
+bundle exec jekyll serve .
+```
 
-Super minimal theme for Jekyll.
-
-Original fork from [https://github.com/GochoMugo/minimal-jekyll](https://github.com/GochoMugo/minimal-jekyll). Based on [https://github.com/orderedlist/minimal](https://github.com/orderedlist/minimal).
+And visiting `localhost:4000` on your browser.

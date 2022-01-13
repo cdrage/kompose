@@ -1,18 +1,21 @@
 title: Kompose
-project_name: Kompose
-description: >
-  kompose is a tool to help users familiar with docker-compose move to Kubernetes. It takes a Docker Compose file and translates it into Kubernetes resources.
-repository_url: https://github.com/kubernetes-incubator/kompose
-repository_shorthand: kubernetes/kompose
+name: Kompose
+email: foo@gmail.com
+github_page: https://github.com/kubernetes/kompose
+slack_page: https://slack.k8s.io
+description: >- # this means to ignore newlines until "baseurl:"
+  Convert your Docker Compose file to Kubernetes or OpenShift
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+year: 2022
 
-author_name: The Kubernetes Authors
-author_url: https://github.com/kubernetes/kompose
+# Google Analytics number (starts with UA?)
+analytics: 12345
 
-license: Kompose is an Apache 2.0 project.
-copyright: © 2020 The Kubernetes Authors
+instagram: https://www.instagram.com
+facebook: https://www.facebook.com
 
-markdown: kramdown
-
-# Redirection plugin
-gems:
-  - jekyll-redirect-from
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
