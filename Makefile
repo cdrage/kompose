@@ -89,6 +89,10 @@ test-cmd:
 gen-cmd:
 	./script/test/cmd/make-test.sh
 
+.PHONY: test-gen
+test-gen:
+	./script/test/cmd/generate.sh
+
 # run all validation tests
 .PHONY: validate
 validate: gofmt vet

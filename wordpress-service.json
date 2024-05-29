@@ -1,0 +1,31 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "wordpress",
+    "creationTimestamp": null,
+    "labels": {
+      "io.kompose.service": "wordpress"
+    },
+    "annotations": {
+      "kompose.cmd": "kompose convert -f /Users/cdrage/syncthing/dev/go/src/kompose/script/test/fixtures/compose-v3.3-test/compose-endpoint-mode-1.yaml -j",
+      "kompose.version": "1.33.0 (22be122bc)"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "8080",
+        "port": 8080,
+        "targetPort": 80
+      }
+    ],
+    "selector": {
+      "io.kompose.service": "wordpress"
+    },
+    "type": "NodePort"
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+}
